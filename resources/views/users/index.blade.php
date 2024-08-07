@@ -1,60 +1,58 @@
-@extends('layouts.app')
+<x-app-layout>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-@section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Dashboard</div>
+            <div class="bg-green-800 p-2 rounded m-2">
+                <a class="text-white" href="{{route('user.create')}}">Cadastrar</a>
+            </div>
 
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-                        <a class="text-success" href="">&plus; Cadastrar RECURSO</a>
-
-                        @if($errors)
-                            @foreach($errors->all() as $error)
-                                <div class="alert alert-danger mt-4" role="alert">
-                                    {{ $error }}
-                                </div>
-                            @endforeach
-                        @endif
-
-                        <table class="table table-striped mt-4">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>RECURSO</th>
-                                <th>Ações</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-
-{{--                            @foreach()--}}
+            <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg mb-6">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                                      <div class="border-b border-gray-900/10 pb-12">
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                                <thead class="bg-gray-50 dark:bg-gray-900">
                                 <tr>
-                                    <td>ID</td>
-                                    <td>RECURSO</td>
-                                    <td class="d-flex">
-                                        <a class="mr-3 btn btn-sm btn-outline-success" href="">Editar</a>
-                                        <a class="mr-3 btn btn-sm btn-outline-info" href="">Perfis</a>
-                                        <form action="" method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <input class="btn btn-sm btn-outline-danger" type="submit" value="Remover">
-                                        </form>
-                                    </td>
-                                </tr>
-{{--                            @endforeach--}}
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                                        Usuario
+                                    </th>
 
-                            </tbody>
-                        </table>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                                        Ações
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                                @foreach($users as $user)
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-100">
+                                            {{$user->name}}
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <form action="{{ route('user.destroy', $user->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="mr-2 text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300">
+                                                    Excluir
+                                                </button>
+                                            </form>
+
+                                            <form action="{{ route('user.edit', $user->id) }}" method="GET" class="inline-block">
+                                                @csrf
+                                                <button type="submit" class="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300">
+                                                    Editar
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-@endsection
+</x-app-layout>

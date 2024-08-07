@@ -12,7 +12,8 @@
 
                                         <div class="card-body">
 
-                                            <a class="text-success" href="{{route('user.index')}}">&leftarrow; Voltar para a listagem</a>
+                                            <a class="text-success" href="{{route('user.index')}}">&leftarrow; Voltar
+                                                para a listagem</a>
 
                                             @if($errors)
                                                 @foreach($errors->all() as $error)
@@ -22,24 +23,30 @@
                                                 @endforeach
                                             @endif
 
-                                            <form action="{{route('user.store')}}" method="post" class="mt-4" autocomplete="off">
+                                            <form action="{{route('user.update', ['user' => $user->id])}}" method="post"
+                                                  class="mt-4" autocomplete="off">
                                                 @csrf
+                                                @method('put')
 
                                                 <div class="form-group">
                                                     <label for="name">Password</label>
-                                                    <input type="text" class="form-control" id="name" placeholder="Insira o RECURSO"
-                                                           name="name" value="{{ old('name') }}">
+                                                    <input type="text" class="form-control text-black" id="name"
+                                                           placeholder="Insira o RECURSO"
+                                                           name="name" value="{{ old('name') ?? $user->name }}">
 
                                                     <label for="email">Password</label>
-                                                    <input type="email" class="form-control" id="email" placeholder="Insira o RECURSO"
-                                                           name="email" value="{{ old('email') }}">
+                                                    <input type="email" class="form-control text-black" id="email"
+                                                           placeholder="Insira o RECURSO"
+                                                           name="email" value="{{ old('email') ?? $user->email}}">
 
                                                     <label for="password">password</label>
-                                                    <input type="password" class="form-control" id="password" placeholder="Insira o RECURSO"
+                                                    <input type="password" class="form-control text-black" id="password"
+                                                           placeholder="Insira o RECURSO"
                                                            name="password" value="{{ old('password') }}">
                                                 </div>
 
-                                                <button type="submit" class="btn btn-block btn-success">Cadastrar</button>
+                                                <button type="submit" class="btn btn-block btn-success">Cadastrar
+                                                </button>
                                             </form>
                                         </div>
                                     </div>
