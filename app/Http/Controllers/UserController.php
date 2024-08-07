@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
-
+use Illuminate\Validation\Rules;
 class UserController extends Controller
 {
 
@@ -28,13 +27,11 @@ class UserController extends Controller
 
     public function store(): RedirectResponse
     {
-        $users = request()->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required'
-        ]);
-
-        User::query()->create($users);
+        User::query()->create(request()->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]));
 
         return to_route('user.index');
     }
@@ -51,17 +48,15 @@ class UserController extends Controller
 
     public function update(User $user, Request $request): RedirectResponse
     {
-        $validation  = request()->validate([
-            'name' => 'min:4|string',
-            'email' => 'min:4|string',
-            'status' => 'string'
-        ]);
-
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
 
-        $user->update($validation);
+        $user->update(request()->validate([
+            'name' => 'min:4|string',
+            'email' => 'min:4|string',
+            'status' => 'string'
+        ]));
 
         return to_route('user.index');
     }
