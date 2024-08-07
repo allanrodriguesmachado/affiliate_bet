@@ -13,7 +13,7 @@ class UserController extends Controller
 
     public function index(): View
     {
-        $users = User::all();
+        $users = User::query()->where('status', 'false')->get();
 
         return view('users.index', [
             'users' => $users
@@ -25,7 +25,6 @@ class UserController extends Controller
     {
         return view('users.create');
     }
-
 
     public function store(): RedirectResponse
     {
@@ -40,7 +39,6 @@ class UserController extends Controller
         return to_route('user.index');
     }
 
-
     public function show(string $id)
     {
         //
@@ -51,18 +49,22 @@ class UserController extends Controller
         return view('users.edit', compact('user'));
     }
 
-    public function update(User $user): RedirectResponse
+    public function update(User $user, Request $request): RedirectResponse
     {
         $validation  = request()->validate([
             'name' => 'min:4|string',
-            'email' => 'min:4|string'
+            'email' => 'min:4|string',
+            'status' => 'string'
         ]);
+
+        if ($request->user()->isDirty('email')) {
+            $request->user()->email_verified_at = null;
+        }
 
         $user->update($validation);
 
         return to_route('user.index');
     }
-
 
     public function destroy(string $id): RedirectResponse
     {
