@@ -109,17 +109,34 @@
                                         </td>
 
                                         <td class="flex justify-end items-center">
-                                            {{--                                            <form action="{{ route('user.edit', $user->id) }}" method="GET"--}}
-                                            {{--                                                  class="inline-block">--}}
-                                            {{--                                                @csrf--}}
-                                            {{--                                                <button type="submit"--}}
-                                            {{--                                                        class="font-bold text-blue-700 hover:text-blue-600 dark:text-blue-700 dark:hover:text-blue-600">--}}
-                                            {{--                                                    <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
-                                            {{--                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.77885 15.779L1.36085 17.918L3.49985 11.5M7.77885 15.779L16.1428 7.13599C16.7099 6.56839 17.0285 5.79885 17.0285 4.99649C17.0285 4.19413 16.7099 3.42459 16.1428 2.85699C15.5752 2.28987 14.8057 1.97131 14.0033 1.97131C13.201 1.97131 12.4314 2.28987 11.8638 2.85699L3.49985 11.5M7.77885 15.779L3.49985 11.5M5.63885 13.64L11.8516 7.13599M9.75094 5.04036L13.9998 9.27899" />--}}
-                                            {{--                                                    </svg>--}}
+                                            <form action="{{ route('affiliated.edit', $affiliate->id) }}" method="GET"
+                                                  class="inline-block">
+                                                @csrf
+                                                <button type="submit"
+                                                        class="font-bold text-blue-700 hover:text-blue-600 dark:text-blue-700 dark:hover:text-blue-600">
+                                                    <svg width="19" height="19" viewBox="0 0 19 19" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path stroke="currentColor" stroke-linecap="round"
+                                                              stroke-linejoin="round" stroke-width="2"
+                                                              d="M7.77885 15.779L1.36085 17.918L3.49985 11.5M7.77885 15.779L16.1428 7.13599C16.7099 6.56839 17.0285 5.79885 17.0285 4.99649C17.0285 4.19413 16.7099 3.42459 16.1428 2.85699C15.5752 2.28987 14.8057 1.97131 14.0033 1.97131C13.201 1.97131 12.4314 2.28987 11.8638 2.85699L3.49985 11.5M7.77885 15.779L3.49985 11.5M5.63885 13.64L11.8516 7.13599M9.75094 5.04036L13.9998 9.27899"/>
+                                                    </svg>
 
-                                            {{--                                                </button>--}}
-                                            {{--                                            </form>--}}
+                                                </button>
+                                            </form>
+
+                                            <form action="{{ route('commission.index') }}" method="GET"
+                                                  class="inline-block">
+                                                @csrf
+                                                <button type="submit"
+                                                        class="font-bold text-blue-700 hover:text-blue-600 dark:text-blue-700 dark:hover:text-blue-600">
+                                                    <svg width="19" height="19" viewBox="0 0 19 19" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path stroke="currentColor" stroke-linecap="round"
+                                                              stroke-linejoin="round" stroke-width="2"
+                                                              d="M7.77885 15.779L1.36085 17.918L3.49985 11.5M7.77885 15.779L16.1428 7.13599C16.7099 6.56839 17.0285 5.79885 17.0285 4.99649C17.0285 4.19413 16.7099 3.42459 16.1428 2.85699C15.5752 2.28987 14.8057 1.97131 14.0033 1.97131C13.201 1.97131 12.4314 2.28987 11.8638 2.85699L3.49985 11.5M7.77885 15.779L3.49985 11.5M5.63885 13.64L11.8516 7.13599M9.75094 5.04036L13.9998 9.27899"/>
+                                                    </svg>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

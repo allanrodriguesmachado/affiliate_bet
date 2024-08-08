@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\affiliate;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -57,23 +58,22 @@ class AffiliateController extends Controller
         return to_route('affiliated.index');
     }
 
-    public function show(string $id)
+    public function edit(Affiliate $affiliated)
     {
-        //
+        return view('affiliated.edit', [
+            'affiliated' => $affiliated
+        ]);
     }
 
-    public function edit(string $id)
+    public function update(Affiliate $affiliated, Request $request)
     {
-        //
-    }
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'cpf' => 'required|string|max:255',
+            'status' => 'required|string',
+        ]);
 
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    public function destroy(string $id)
-    {
-        //
+        $affiliated->update($validated);
+        return redirect(route('affiliated.index'));
     }
 }

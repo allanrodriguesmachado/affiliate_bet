@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\AffiliateController;
+use App\Http\Controllers\CommissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,9 @@ Route::resource('user', UserController::class)
 
 
 Route::resource('affiliated', AffiliateController::class)
+    ->only(['index', 'store', 'edit', 'update', 'destroy', 'create']);
+
+Route::resource('commission', CommissionController::class)
     ->only(['index', 'store', 'edit', 'update', 'destroy', 'create']);
 
 
