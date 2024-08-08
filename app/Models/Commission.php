@@ -9,4 +9,9 @@ use Illuminate\Notifications\Notifiable;
 class Commission extends Model
 {
     use HasFactory, Notifiable;
+
+    public function affiliate()
+    {
+        return $this->belongsTo(Affiliate::class);
+    }
 }
