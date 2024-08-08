@@ -1,11 +1,10 @@
 <x-app-layout>
 
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="card-header mb-7">
                 <div class="ms-2 flex justify-start items-center">
-                    <a href="{{route('user.index')}}"
+                    <a href="{{route('affiliated.index')}}"
                        class="inline-flex justify-center items-center py-1 px-3 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
                         Voltar
                         <svg width="15" height="9" class="m-2" viewBox="0 0 16 10" fill="none"

@@ -1,19 +1,7 @@
 <x-app-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="card-header mb-7">
-                <div class="ms-2 flex justify-start items-center">
-                    <a href="{{route('user.index')}}"
-                       class="inline-flex justify-center items-center py-1 px-3 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
-                        Voltar
-                        <svg width="15" height="9" class="m-2" viewBox="0 0 16 10" fill="none"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 5H15M1 5L5 1M1 5L5 9" stroke="white" stroke-width="2" stroke-linecap="round"
-                                  stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+            <x-btn.back name="Voltar" :route="route('user.index')" />
 
             <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg mb-6">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
