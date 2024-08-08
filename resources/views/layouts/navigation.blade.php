@@ -46,7 +46,11 @@
                         </x-dropdown-link>
 
                         <x-dropdown-link :href="route('user.index')">
-                            Gestão de usuario
+                            {{ __('Gestão De Usuários') }}
+                        </x-dropdown-link>
+
+                        <x-dropdown-link :href="route('affiliated.index')">
+                            {{ __('Programa De Afiliados') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -93,6 +97,15 @@
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('user.index')">
+                    {{ __('Gestão De Usuários') }}
+                </x-responsive-nav-link>
+
+
+                <x-responsive-nav-link :href="route('affiliated.index')">
+                    {{ __('Programa De Afiliados') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AddressController;
+use App\Http\Controllers\AffiliateController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -13,12 +15,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('user', UserController::class)
+    ->only(['index', 'store', 'edit', 'update', 'destroy', 'create']);
 
-    ->only(['index', 'store', 'edit', 'update', 'create'])
 
-    ->only(['index', 'store', 'edit', 'update', 'destroy', 'create'])
-
-    ->middleware(['auth', 'verified']);
+Route::resource('affiliated', AffiliateController::class)
+    ->only(['index', 'store', 'edit', 'update', 'destroy', 'create']);
 
 
 Route::middleware('auth')->group(function () {
