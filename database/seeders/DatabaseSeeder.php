@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Affiliate;
+use App\Models\Commission;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -19,6 +20,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        Commission::factory(10)->create();
 
         Affiliate::factory(10)->create();
     }

@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('commissions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('affiliated_id')->constrained('affiliates')->onDelete('cascade');
+            $table->decimal('amount', 8, 2);
+            $table->date('commission_created_at');
             $table->timestamps();
         });
     }

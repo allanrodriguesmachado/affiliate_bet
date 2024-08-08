@@ -1,1 +1,14 @@
-<h1>Commission</h1>
+@php use Carbon\Carbon as CarbonAlias; @endphp
+<x-app-layout>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <x-btn.register name="Cadastrar" :route="route('commission.create')" />
+
+
+        </div>
+    </div>
+</x-app-layout>
+
+
+
+
