@@ -1,22 +1,5 @@
 ---
 
-<h1 align="center">
-    <img alt="Logo RealsBet" title="Logo RealsBet" src="./.github/images/logo-realsbet.svg" />
-    RealsBet - PHP Laravel Pleno
-</h1>
-
-<p align="center">
- <a href="#-introdução">Introdução</a> |
- <a href="#-demonstração">Demonstração</a> |
- <a href="#-tecnologias">Tecnologias</a> |
- <a href="#-layout">Layout</a> |
- <a href="#-pré-requisitos">Pré-requisitos</a> |
- <a href="#-configuração">Configuração</a> |
- <a href="#-licença">Licença</a>
-</p>
-
----
-
 ## 📚 Introdução
 
 O **RealsBet** é um sistema de gerenciamento que permite controlar usuários, afiliados e comissões. Ele inclui funcionalidades para o cadastro, listagem, edição e inativação de usuários e afiliados, além de permitir a adição e exclusão de comissões e consulta detalhada das mesmas.
