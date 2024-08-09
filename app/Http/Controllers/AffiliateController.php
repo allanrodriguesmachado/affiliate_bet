@@ -18,18 +18,18 @@ class AffiliateController extends Controller
         ]);
     }
 
-    public function create()
+    public function create(): View
     {
         return view('affiliated.create');
     }
 
-    public function store()
+    public function store(): RedirectResponse
     {
         $validate = \request()->validate([
             'name' => 'string',
-            'cpf' => 'string',
+            'cpf' => 'string|unique:affiliates',
             'birth_date' => 'string',
-            'email' => 'string',
+            'email' => 'string|unique:affiliates',
             'phone' => 'string',
             'cep' => 'string',
             'number' => 'string',
@@ -44,19 +44,28 @@ class AffiliateController extends Controller
         return to_route('affiliated.index');
     }
 
-    public function edit(Affiliate $affiliated)
+    public function edit(Affiliate $affiliated): View
     {
         return view('affiliated.edit', [
             'affiliated' => $affiliated
         ]);
     }
 
-    public function update(Affiliate $affiliated, Request $request)
+    public function update(Affiliate $affiliated, Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'name' => 'string|max:255',
-            'cpf' => 'string|max:255',
-            'status' => 'string',
+            'name' => 'string',
+            'cpf' => 'string',
+            'birth_date' => 'string',
+            'email' => 'string',
+            'phone' => 'string',
+            'cep' => 'string',
+            'number' => 'string',
+            'address' => 'string',
+            'neighborhood' => 'string',
+            'city' => 'string',
+            'state' => 'string',
+            'status' => 'string'
         ]);
 
         $affiliated->update($validated);

@@ -33,7 +33,7 @@ class CommissionController extends Controller
     {
         $request->validate([
             'affiliated_id' => 'required|exists:affiliates,id',
-            'amount' => 'required|numeric|min:0',
+            'amount' => 'required|string|min:0',
             'commission_created_at' => 'required|date',
         ]);
 

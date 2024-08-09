@@ -12,7 +12,7 @@ class UserController extends Controller
 
     public function index(): View
     {
-        $users = User::query()->where('status', 'false')->get();
+        $users = User::query()->where('status', 'active')->get();
 
         return view('users.index', [
             'users' => $users

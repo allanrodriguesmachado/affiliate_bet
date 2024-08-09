@@ -50,7 +50,11 @@
             </header>
 
             <main class="mt-6">
-                <img src="https://media.pl-01.cdn-platform.com/cms/sites/image-170427001213329.webp" class="h-5 w-10" alt="Flowbite Logo"/>
+                    <div class="flex justify-center items-center">
+                        <img src="https://media.pl-01.cdn-platform.com/cms/sites/image-170427001213329.webp" class="h-80" alt="Logo"/>
+                    </div>
+
+{{--                <img src="https://media.pl-01.cdn-platform.com/cms/sites/image-170427001213329.webp" class="h-5 w-10" alt="Flowbite Logo"/>--}}
             </main>
         </div>
     </body>

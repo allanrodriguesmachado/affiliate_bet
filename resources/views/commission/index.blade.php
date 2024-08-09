@@ -22,7 +22,7 @@
 
                                     <th class=" text-center">
                                         <span class="flex items-center text-center">
-                                            Excluir
+
                                         </span>
                                     </th>
                                 </tr>
@@ -30,17 +30,38 @@
                                 <tbody>
 
                                 @foreach($commissions as $commission)
-                                    <tr>
-                                        <td class=" text-center text-sm font-medium text-gray-900 dark:text-gray-100">
-                                           R$ {{number_format($commission->amount, 2, ',', '.')}}
-                                        </td>
 
-                                        <td class="flex justify-center items-center">
+                                    @php
+                                        $amountString = trim($commission->amount);
+
+                                        $sign = '';
+                                        if (strpos($amountString, '+') === 0) {
+                                            $sign = '+';
+                                            $amountString = substr($amountString, 1);
+                                        }
+                                        if (strpos($amountString, '-') === 0) {
+                                            $sign = '-';
+                                            $amountString = substr($amountString, 1);
+                                        }
+
+                                        $amount = floatval(trim($amountString));
+
+                                        $formattedAmount = number_format($amount, 2, ',', '.');
+
+                                        $displayAmount = 'R$ ' . $sign . ' ' . $formattedAmount;
+                                    @endphp
+
+                                    <td class="text-center text-sm font-medium text-gray-900 dark:text-gray-100">
+                                        {{ $displayAmount }}
+                                    </td>
+
+
+                                    <td class="flex justify-center items-center">
                                             <form action="{{ route('commission.destroy', $commission->id) }}" method="POST"
                                                   class="inline-block">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="px-3 py-2 text-sm font-medium text-center inline-flex items-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                                                <button type="submit" class="px-3 py-2 text-sm font-medium text-center inline-flex items-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                                                     Excluir
                                                 </button>
                                             </form>

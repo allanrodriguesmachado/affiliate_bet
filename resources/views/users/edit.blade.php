@@ -46,7 +46,7 @@
                                                         type="checkbox"
                                                         name="status"
                                                         id="status"
-                                                        value="true"
+                                                        value="inactive"
                                                         class="sr-only peer"
                                                         {{ old('status', $user->status) ? 'unchecked' : '' }}
                                                         {{ !$user->status ? 'checked' : '' }}>
