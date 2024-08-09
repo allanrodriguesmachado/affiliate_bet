@@ -13,6 +13,6 @@ class Affiliate extends Model
 
     public function commissions(): HasMany
     {
-        return $this->hasMany(Commission::class);
+        return $this->hasMany(Commission::class, 'affiliated_id');
     }
 }

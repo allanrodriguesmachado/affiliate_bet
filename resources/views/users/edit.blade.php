@@ -58,7 +58,7 @@
                                     <div class="flex justify-end items-center">
                                         <button type="submit"
                                                 class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                                            Salvar
+                                            {{ __('Alterar') }}
                                         </button>
                                     </div>
                                 </form>
@@ -125,18 +125,8 @@
                                                     class="mt-2"/>
                                         </div>
 
-                                        <div class="flex items-center gap-4">
+                                        <div class="flex justify-end items-center">
                                             <x-primary-button>{{ __('Alterar') }}</x-primary-button>
-
-                                            {{--                                                @if (session('status') === 'password-updated')--}}
-                                            {{--                                                    <p--}}
-                                            {{--                                                            x-data="{ show: true }"--}}
-                                            {{--                                                            x-show="show"--}}
-                                            {{--                                                            x-transition--}}
-                                            {{--                                                            x-init="setTimeout(() => show = false, 2000)"--}}
-                                            {{--                                                            class="text-sm text-gray-600 dark:text-gray-400"--}}
-                                            {{--                                                    >{{ __('Saved.') }}</p>--}}
-                                            {{--                                                @endif--}}
                                         </div>
                                     </form>
                                 </section>

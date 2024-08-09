@@ -52,7 +52,6 @@ class UserController extends Controller
             $request->user()->email_verified_at = null;
         }
 
-        dd($user);
 
         $user->update(request()->validate([
             'name' => 'min:4|string',

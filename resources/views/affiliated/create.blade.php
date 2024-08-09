@@ -2,19 +2,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="card-header mb-7">
-                <div class="ms-2 flex justify-start items-center">
-                    <a href="{{route('affiliated.index')}}"
-                       class="inline-flex justify-center items-center py-1 px-3 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
-                        Voltar
-                        <svg width="15" height="9" class="m-2" viewBox="0 0 16 10" fill="none"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 5H15M1 5L5 1M1 5L5 9" stroke="white" stroke-width="2" stroke-linecap="round"
-                                  stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+            <x-btn.back name="Voltar" :route="route('affiliated.index')" />
 
             <form method="post" action="{{ route('affiliated.store') }}">
                 @csrf
@@ -59,7 +47,7 @@
 
                     <div>
                         <label for="cep" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CEP</label>
-                        <input type="text" name="cep" id="cep"
+                        <input type="text" name="cep" id="cep" onchange="fetchAddress()"
                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                placeholder="00000-000" required />
                     </div>
@@ -118,5 +106,55 @@
     </div>
 </x-app-layout>
 
+<script>
+    const viacepApiUrl = 'https://viacep.com.br/ws/';
 
+    let debounceTimeout;
+    const debounceDelay = 500;
+
+    function debounceFetchAddress() {
+        clearTimeout(debounceTimeout);
+        debounceTimeout = setTimeout(fetchAddress, debounceDelay);
+    }
+
+    async function fetchAddress() {
+        const cep = document.getElementById('cep').value.replace(/\D/g, '');
+        if (cep.length === 8) {
+            try {
+                const response = await fetch(`${viacepApiUrl}${cep}/json/`);
+                if (!response.ok) throw new Error('Network response was not ok');
+
+                const data = await response.json();
+
+                if (data.erro) {
+                    alert('CEP não encontrado');
+                    document.getElementById('address').value = '';
+                    document.getElementById('neighborhood').value = '';
+                    document.getElementById('city').value = '';
+                    document.getElementById('state').value = '';
+                } else {
+                    document.getElementById('address').value = data.logradouro || '';
+                    document.getElementById('neighborhood').value = data.bairro || '';
+                    document.getElementById('city').value = data.localidade || '';
+                    document.getElementById('state').value = data.uf || '';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Erro ao buscar o endereço');
+            }
+        } else {
+            document.getElementById('address').value = '';
+            document.getElementById('neighborhood').value = '';
+            document.getElementById('city').value = '';
+            document.getElementById('state').value = '';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const cepInput = document.getElementById('cep');
+        if (cepInput) {
+            cepInput.addEventListener('input', debounceFetchAddress);
+        }
+    });
+</script>
 

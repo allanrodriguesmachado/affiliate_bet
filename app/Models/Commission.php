@@ -12,6 +12,6 @@ class Commission extends Model
 
     public function affiliate()
     {
-        return $this->belongsTo(Affiliate::class);
+        return $this->belongsTo(Affiliate::class, 'affiliated_id');
     }
 }

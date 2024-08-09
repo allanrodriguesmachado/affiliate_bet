@@ -1,9 +1,8 @@
 <x-app-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
             <x-btn.back name="Voltar" :route="route('affiliated.index')"/>
-            <x-btn.back name="Comissão" :route="route('affiliated.index')"/>
+
 
             <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg mb-6">
                 <div class="p-6 text-gray-900 dark:text-gray-100">

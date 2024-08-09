@@ -23,7 +23,10 @@ Route::resource('affiliated', AffiliateController::class)
     ->only(['index', 'store', 'edit', 'update', 'destroy', 'create']);
 
 Route::resource('commission', CommissionController::class)
-    ->only(['index', 'store', 'edit', 'update', 'destroy', 'create']);
+    ->only([ 'store', 'edit', 'update', 'destroy']);
+
+Route::get('/commission/create/{affiliateId}', [CommissionController::class, 'create'])->name('commission.create');
+Route::get('/commission/index', [CommissionController::class, 'index'])->name('commission.index');
 
 
 Route::middleware('auth')->group(function () {
