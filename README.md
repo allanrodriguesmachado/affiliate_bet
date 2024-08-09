@@ -1,6 +1,5 @@
 ---
 
-
 <h1 align="center">
     <img alt="Logo RealsBet" title="Logo RealsBet" src="./.github/images/logo-realsbet.svg" />
     RealsBet - PHP Laravel Pleno
